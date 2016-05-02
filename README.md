@@ -2,7 +2,7 @@
 Simple Cpp Http header library using curl
 
 ##Features
-* Simple get allowing set and return headers.
+* Simple get request allowing set and return headers.
 * Chunked Http
 
 ##Usage
