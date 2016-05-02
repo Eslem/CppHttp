@@ -8,11 +8,12 @@ Simple Cpp Http header library using curl
 ##Usage
 * GET
 ```Cpp
-    std::string Http::get(url, [headerMap<std::string, std::string]={}, [std::string *headerPtr]=nullptr)
+    std::string Http::get(url, [headerMap<std::string, std::string]={}, [std::string *headerPtr]=nullptr);
 ```
 
 
 * Chunk
 ```
-    Http::HttpChunked request{[](const std::string &data){}} //Lambda Function
+    Http::HttpChunked request{[](const std::string &data){}}; //Lambda Function
+    request.start();
 ```
