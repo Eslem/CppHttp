@@ -1,7 +1,7 @@
 CC=g++
 GDB=gdb
 
-CFLAGS=-Wall -std=c++11 -O3
+CFLAGS=-Wall -std=c++0x -O3
 LIBS=-lcurl
 TESTLIBS=-lcppunit
 
