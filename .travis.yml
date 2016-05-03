@@ -8,17 +8,19 @@ addons:
     # install toolchains
     - gcc-4.9
     - g++-4.9
+    - clang
     - libcurl4-openssl-dev
     - libcppunit-dev
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9"; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.8"; fi
 
 # Enable C++ support
 language: cpp
 # Compiler selection
 compiler:
   - g++
+  - clang
 # Build steps
 script:
   - $CXX --version
