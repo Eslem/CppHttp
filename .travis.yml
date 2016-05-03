@@ -12,7 +12,7 @@ addons:
     - manpages-dev 
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
 
 language: cpp
 
@@ -20,6 +20,7 @@ compiler:
   - g++
 
 script:
+  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
   - $CXX --version
   - make clean
   - make
