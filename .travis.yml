@@ -1,3 +1,5 @@
+sudo: false
+
 addons:
   apt:
     sources:
@@ -6,11 +8,15 @@ addons:
     - llvm-toolchain-precise-3.6
     packages:
     # install toolchains
+    - build-essential
+    - manpages-dev 
     - gcc-4.9
     - g++-4.9
     - clang
     - libcurl4-openssl-dev
     - libcppunit-dev
+    - build-essential 
+    - manpages-dev 
 
 install:
   - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.8"; fi
