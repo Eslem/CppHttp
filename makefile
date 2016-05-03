@@ -18,4 +18,4 @@ test:$(TEST_EXES)
 
 %.out : %.cpp 
 	$(CXX) $(CFLAGS) -o $@ $^ $(LIBS) $(TESTLIBS)
-	/usr/bin/time ./$@
+	./$@
