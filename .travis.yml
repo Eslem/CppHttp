@@ -14,7 +14,11 @@
 #     - libcppunit-dev
 #     - build-essential 
 #     - manpages-dev 
-    
+
+
+before_install:
+  chmod ugo+x ./install-dependencies.sh
+  
 install: ./install-dependencies.sh
 
 # Enable C++ support
