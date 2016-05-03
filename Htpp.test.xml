@@ -6,17 +6,23 @@
       <Name>HTTPTest::simpleGet</Name>
     </Test>
     <Test id="2">
-      <Name>HTTPTest::GetReadHeaders</Name>
+      <Name>HTTPTest::simplePOST</Name>
     </Test>
     <Test id="3">
-      <Name>HTTPTest::GetSetHeaders</Name>
+      <Name>HTTPTest::ReadHeaders</Name>
     </Test>
     <Test id="4">
+      <Name>HTTPTest::GetWithHeaders</Name>
+    </Test>
+    <Test id="5">
       <Name>HTTPTest::GetChunked</Name>
+    </Test>
+    <Test id="6">
+      <Name>HTTPTest::MapToQuery</Name>
     </Test>
   </SuccessfulTests>
   <Statistics>
-    <Tests>4</Tests>
+    <Tests>6</Tests>
     <FailuresTotal>0</FailuresTotal>
     <Errors>0</Errors>
     <Failures>0</Failures>

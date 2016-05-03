@@ -24,9 +24,11 @@ class HTTPTest : public CppUnit::TestFixture{
 
 	CPPUNIT_TEST_SUITE(HTTPTest);
 	CPPUNIT_TEST(simpleGet);
-	CPPUNIT_TEST(GetReadHeaders);
-	CPPUNIT_TEST(GetSetHeaders);
+	CPPUNIT_TEST(simplePOST);
+	CPPUNIT_TEST(ReadHeaders);
+	CPPUNIT_TEST(GetWithHeaders);
 	CPPUNIT_TEST(GetChunked);
+	CPPUNIT_TEST(MapToQuery);
 	CPPUNIT_TEST_SUITE_END();
 
 public:
@@ -35,9 +37,11 @@ public:
 
 private:
 	void simpleGet(void);
-	void GetReadHeaders(void);
-	void GetSetHeaders(void);
+	void simplePOST(void);
+	void ReadHeaders(void);
+	void GetWithHeaders(void);
 	void GetChunked(void);
+	void MapToQuery(void);
 
 };
 
@@ -50,26 +54,39 @@ void HTTPTest::tearDown(void){
 
 void HTTPTest::simpleGet(void){
 	string resp = Http::get("https://httpbin.org/get");
+	cout<<'\n'<<resp<<'\n';
 	CPPUNIT_ASSERT(!resp.empty());
 }
 
-void HTTPTest::GetReadHeaders(void){
+
+void HTTPTest::simplePOST(void){
+	string resp = Http::post("https://httpbin.org/post", {{"foo","oof"}, {"nain", "nian"}});
+	cout<<'\n'<<resp<<'\n';
+	CPPUNIT_ASSERT(!resp.empty());
+}
+
+void HTTPTest::MapToQuery(void){
+	map<string, string> params;
+	params["foo"]="oof";
+	params["nain"]="nian";
+	CPPUNIT_ASSERT(Http::mapToURL(params)=="foo=oof&nain=nian");
+}
+
+void HTTPTest::ReadHeaders(void){
 	string headers;
 	string resp = Http::get("https://httpbin.org/get", {}, &headers);
+	cout<<'\n'<<headers<<'\n';
 	CPPUNIT_ASSERT(!headers.empty());
 }
 
 
-void HTTPTest::GetSetHeaders(void){
+void HTTPTest::GetWithHeaders(void){
 	map<string, string> headerMap;
 	string header;
 	headerMap["Authorization"] = "Bearer hashed";
 	string resp = Http::get("https://httpbin.org/headers", headerMap, &header);
+	cout<<'\n'<<resp<<'\n';
 	CPPUNIT_ASSERT(!header.empty());
-}
-
-void callback(string data){
-	cout<<data<<endl;
 }
 
 void HTTPTest::GetChunked(void){
