@@ -17,9 +17,9 @@
 
 
 before_install:
-  chmod ugo+x ./install-dependencies.sh
-  
-install: ./install-dependencies.sh
+  chmod +x ./install-dependencies.sh
+
+install: sudo ./install-dependencies.sh
 
 # Enable C++ support
 language: cpp
