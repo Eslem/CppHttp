@@ -26,7 +26,6 @@ language: cpp
 # Compiler selection
 compiler:
   - g++
-  - clang
 # Build steps
 script:
   - $CXX --version
