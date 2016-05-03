@@ -14,7 +14,7 @@ Simple Cpp Http header library using curl
 
 * POST
 ```Cpp
-    std::string Http::post(string url, map<string, string] params, [map<string, string> headers={}], [string *headerPtr=nullptr]);
+    std::string Http::post(string url, map<string, string> params, [map<string, string> headers={}], [string *headerPtr=nullptr]);
 ```
 
 
