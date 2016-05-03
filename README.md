@@ -1,11 +1,11 @@
 # CppHttp
 Simple Cpp Http header library using curl
 
-##Features
+###Features
 * Simple get request allowing set and return headers.
 * Chunked Http
 
-##Usage
+###Usage
 * GET
 ```Cpp
     std::string Http::get(url, [headerMap<std::string, std::string]={}, [std::string *headerPtr]=nullptr);
