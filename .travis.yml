@@ -6,14 +6,13 @@ addons:
     - llvm-toolchain-precise-3.6
     packages:
     # install toolchains
-    - gcc-5
-    - g++-5
-    - clang-3.6
-    - libcurl-dev
+    - gcc-4.9
+    - g++-4.9
+    - libcurl4-openssl-dev
     - libcppunit-dev
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9"; fi
 
 # Enable C++ support
 language: cpp
