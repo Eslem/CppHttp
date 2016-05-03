@@ -24,4 +24,4 @@ script:
   - make clean
   - make
   - make test
-  - less Http.test.xml
+  - cat Http.test.xml
