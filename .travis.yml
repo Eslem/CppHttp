@@ -10,8 +10,8 @@ addons:
     # install toolchains
     - build-essential
     - manpages-dev 
-    - gcc-4.9
-    - g++-4.9
+    - gcc-6
+    - g++-6
     - clang
     - libcurl4-openssl-dev
     - libcppunit-dev
@@ -19,7 +19,7 @@ addons:
     - manpages-dev 
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.8"; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-6" CC="gcc-6"; fi
 
 # Enable C++ support
 language: cpp
