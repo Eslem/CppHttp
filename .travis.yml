@@ -4,8 +4,8 @@ addons:
     - ubuntu-toolchain-r-test
     - llvm-toolchain-precise-3.6
     packages:
-    - gcc-5
-    - g++-5
+    - gcc-4.9
+    - g++-4.9
     - libcurl4-openssl-dev
     - libcppunit-dev
     - build-essential 
