@@ -25,6 +25,10 @@ namespace Http{
 		curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
 	}
 
+	inline std::string mapToURL(std::map<std::string, std::string> map){
+		
+	}
+
 	inline std::string get(std::string url, std::map<std::string, std::string> headerMap={}, std::string* headerPtr=nullptr){
 		std::string body;
 		std::string header;

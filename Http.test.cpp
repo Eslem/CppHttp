@@ -49,13 +49,13 @@ void HTTPTest::tearDown(void){
 
 
 void HTTPTest::simpleGet(void){
-	string resp = Http::get("http://google.com");
+	string resp = Http::get("https://httpbin.org/get");
 	CPPUNIT_ASSERT(!resp.empty());
 }
 
 void HTTPTest::GetReadHeaders(void){
 	string headers;
-	string resp = Http::get("http://google.com", {}, &headers);
+	string resp = Http::get("https://httpbin.org/get", {}, &headers);
 	CPPUNIT_ASSERT(!headers.empty());
 }
 
@@ -64,9 +64,8 @@ void HTTPTest::GetSetHeaders(void){
 	map<string, string> headerMap;
 	string header;
 	headerMap["Authorization"] = "Bearer hashed";
-	string resp = Http::get("http://google.com", headerMap, &header);
-	cout<<resp<<endl;
-	CPPUNIT_ASSERT(!resp.empty());
+	string resp = Http::get("https://httpbin.org/headers", headerMap, &header);
+	CPPUNIT_ASSERT(!header.empty());
 }
 
 void callback(string data){
@@ -76,13 +75,11 @@ void callback(string data){
 void HTTPTest::GetChunked(void){
 	Http::HttpChunked request{
 		[](string data){
-			cout<<"Request Callback"<<endl;
-			cout<<data<<endl;
 		}
 	};
 
 	map<string, string> headerMap;
-	headerMap["Authorization"] = "Bearer hash";
+	request.start("https://httpbin.org/stream/20");
 	CPPUNIT_ASSERT(true);
 }
 
@@ -92,27 +89,27 @@ int main(int argc, char* argv[])
 	CPPUNIT_NS::TestResult testresult;
 
     // register listener for collecting the test-results
-    CPPUNIT_NS::TestResultCollector collectedresults;
-    testresult.addListener (&collectedresults);
+	CPPUNIT_NS::TestResultCollector collectedresults;
+	testresult.addListener (&collectedresults);
 
     // register listener for per-test progress output
-    CPPUNIT_NS::BriefTestProgressListener progress;
-    testresult.addListener (&progress);
+	CPPUNIT_NS::BriefTestProgressListener progress;
+	testresult.addListener (&progress);
 
     // insert test-suite at test-runner by registry
-    CPPUNIT_NS::TestRunner testrunner;
-    testrunner.addTest (CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest ());
-    testrunner.run(testresult);
+	CPPUNIT_NS::TestRunner testrunner;
+	testrunner.addTest (CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest ());
+	testrunner.run(testresult);
 
     // output results in compiler-format
-    CPPUNIT_NS::CompilerOutputter compileroutputter(&collectedresults, std::cerr);
-    compileroutputter.write ();
+	CPPUNIT_NS::CompilerOutputter compileroutputter(&collectedresults, std::cerr);
+	compileroutputter.write ();
 
-    ofstream xmlFileOut("Htpp.test.xml");
+	ofstream xmlFileOut("Htpp.test.xml");
 
-    XmlOutputter xmlOut(&collectedresults, xmlFileOut);
-    xmlOut.write();
+	XmlOutputter xmlOut(&collectedresults, xmlFileOut);
+	xmlOut.write();
 
     // return 0 if tests were successful
-    return collectedresults.wasSuccessful() ? 0 : 1;
+	return collectedresults.wasSuccessful() ? 0 : 1;
 }
