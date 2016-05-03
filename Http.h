@@ -10,12 +10,12 @@
 
 
 namespace Http{
-	inline size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string* data) {
+	inline size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string *data) {
 		data->append((char*) ptr, size * nmemb);
 		return size * nmemb;
 	}
 
-	inline void appendHeaders(CURL* curl, std::map<std::string, std::string> headers){
+	inline void appendHeaders(CURL *curl, std::map<std::string, std::string> headers){
 		struct curl_slist *list = NULL;
 		for ( auto const& elem : headers){
 			std::string item =  elem.first+": "+elem.second;
@@ -25,7 +25,7 @@ namespace Http{
 		curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
 	}
 
-	inline std::string get(std::string url, std::map<std::string, std::string> headerMap={}, std::string* headerPtr=nullptr){
+	inline std::string get(std::string url, std::map<std::string, std::string> headerMap, std::string* headerPtr){
 		std::string body;
 		std::string header;
 
