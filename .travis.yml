@@ -1,29 +1,27 @@
-addons:
-  apt:
-    sources:
-    # add PPAs with more up-to-date toolchains
-    - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise-3.6
-    packages:
-    # install toolchains
-    - build-essential
-    - manpages-dev 
-    - gcc-5
-    - g++-5
-    - libcurl4-openssl-dev
-    - libcppunit-dev
-    - build-essential 
-    - manpages-dev 
-
-install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+# addons:
+#   apt:
+#     sources:
+#     # add PPAs with more up-to-date toolchains
+#     - ubuntu-toolchain-r-test
+#     - llvm-toolchain-precise-3.6
+#     packages:
+#     # install toolchains
+#     - build-essential
+#     - manpages-dev 
+#     - gcc-5
+#     - g++-5
+#     - libcurl4-openssl-dev
+#     - libcppunit-dev
+#     - build-essential 
+#     - manpages-dev 
+    
+install: ./install-dependencies.sh
 
 # Enable C++ support
 language: cpp
 # Compiler selection
 compiler:
   - g++
-  - clang
 # Build steps
 script:
   - ./install.sh
