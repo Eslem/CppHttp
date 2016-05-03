@@ -26,8 +26,6 @@ compiler:
   - clang
 # Build steps
 script:
-  - ./install.sh
   - $CXX --version
   - make clean
   - make
-  - make test
