@@ -122,7 +122,7 @@ int main(int argc, char* argv[])
 	CPPUNIT_NS::CompilerOutputter compileroutputter(&collectedresults, std::cerr);
 	compileroutputter.write ();
 
-	ofstream xmlFileOut("Htpp.test.xml");
+	ofstream xmlFileOut("Http.test.xml");
 
 	XmlOutputter xmlOut(&collectedresults, xmlFileOut);
 	xmlOut.write();
