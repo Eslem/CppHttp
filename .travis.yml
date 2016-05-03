@@ -12,6 +12,8 @@ addons:
     - libcurl-dev
     - libcppunit-dev
 
+install:
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-5"; fi
 
 # Enable C++ support
 language: cpp
@@ -20,6 +22,7 @@ compiler:
   - g++
 # Build steps
 script:
+  - $CXX --version
   - make clean
   - make
   - make test

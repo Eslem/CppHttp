@@ -1,4 +1,4 @@
-# CppHttp
+# CppHttp [![Build Status](https://travis-ci.org/Eslem/CppHttp.svg?branch=master)](https://travis-ci.org/Eslem/CppHttp)
 Simple Cpp Http header library using curl
 
 ###Features
