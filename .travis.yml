@@ -2,17 +2,14 @@ addons:
   apt:
     sources:
     - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise-3.6
     packages:
-    - gcc-4.9
-    - g++-4.9
+    - gcc-5
+    - g++-5
     - libcurl4-openssl-dev
     - libcppunit-dev
-    - build-essential 
-    - manpages-dev 
 
 install:
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+  - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
 language: cpp
 
@@ -20,8 +17,8 @@ compiler:
   - g++
 
 script:
-  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 60 --slave /usr/bin/g++ g++ /usr/bin/g++-4.9
   - $CXX --version
   - make clean
   - make
   - make test
+  - less Http.test.xml
