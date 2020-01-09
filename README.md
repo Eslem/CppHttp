@@ -1,12 +1,12 @@
 # CppHttp [![Build Status](https://travis-ci.org/Eslem/CppHttp.svg?branch=master)](https://travis-ci.org/Eslem/CppHttp)
 Simple Cpp Http header library using curl
 
-###Features
+### Features
 * Simple get request allowing set and return headers.
 * Simple post request allowing set and return headers.
 * Chunked Http
 
-###Usage
+### Usage
 * GET
 ```Cpp
     std::string Http::get(string url, [map<string, string] headers={}], [std::string *headerPtr=nullptr]);
